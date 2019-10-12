@@ -9,7 +9,7 @@ CREATE TABLE USERS (
 CREATE TABLE REQUESTS (
     requestid INTEGER PRIMARY KEY,
     giverowner VARCHAR2(50) NOT NULL,
-    recieverowner VARCHAR2(50) NOT NULL,
+    recieverowner VARCHAR2(50),
     recieveraccept INTEGER NOT NULL,
     driveraccept INTEGER NOT NULL,
     CONSTRAINT giver_owner 

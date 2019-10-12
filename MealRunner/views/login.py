@@ -10,6 +10,7 @@ from MealRunner.model import get_db
 APP = flask.Flask(__name__)
 
 
+SECRET_KEY = b'*\x9a\xd6\x81\x8f\xbfg8\xdc\xfa\x80\x0b\xaa?0jZ[X\xc2\x94\x042+'
 
 @MealRunner.app.route('/accounts/login/', methods=['GET', 'POST'])
 def show_login():

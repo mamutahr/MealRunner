@@ -23,4 +23,5 @@ tests/
 *.swp
 .vscode
 .ropeproject/
+*.DS_Store
 .vscode/

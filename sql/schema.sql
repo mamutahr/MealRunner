@@ -3,11 +3,13 @@ CREATE TABLE users (
     fullname VARCHAR2(50) NOT NULL,
     email VARCHAR2(50) NOT NULL,
     password VARCHAR2(256) NOT NULL,
-    type INTEGER NOT NULL
+    type VARCHAR2(50) NOT NULL,
+    address VARCHAR2(50) NOT NULL
 );
 
-CREATE TABLE REQUESTS (
+CREATE TABLE requests (
     requestid INTEGER PRIMARY KEY,
+    description VARCHAR2(100) NOT NULL,
     giverowner VARCHAR2(50) NOT NULL,
     recieverowner VARCHAR2(50),
     recieveraccept INTEGER NOT NULL,

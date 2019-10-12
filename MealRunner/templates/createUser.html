@@ -19,6 +19,19 @@
                 <hr>
         </header>
     
-        {{ username }}
+        <section>
+            <h1>Signup as {{type}}:</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                Name<input type="text" name="fullname"/><br>
+                Username<input type="text" name="username"/><br>
+                Password<input type="password" name="password1"/><br>
+                Confirm Password<input type="password" name="password2"/><br>
+                Email<input type="text" name="email"/><br>
+                Address<input type="text" name="address"/><br>
+                <input type="hidden" name="address" value="{{type}}"/><br>
+                <input type="submit" name="signup" value="sign up"/><br>
+            </form>
+        </section>
+
     </body>
 </html>

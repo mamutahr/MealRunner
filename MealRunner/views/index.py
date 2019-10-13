@@ -42,6 +42,14 @@ def show_index():
             connection.execute("UPDATE requests SET receiverowner = NULL, receiveraccept = 0 \
             WHERE requestid = ?", (flask.request.form["postid"],))
             database.commit()
+        if "drivertake" in flask.request.form:
+            connection.execute("UPDATE requests SET driverowner = ?, driveraccept = 1 \
+            WHERE requestid = ?", (user, flask.request.form["postid"]))
+            database.commit()
+        if "drivergiveback" in flask.request.form:
+            connection.execute("UPDATE requests SET driverowner = NULL, driveraccept = 0 \
+            WHERE requestid = ?", (flask.request.form["postid"],))
+            database.commit()
 
     connection.execute('SELECT * FROM requests')
     requests = connection.fetchall()

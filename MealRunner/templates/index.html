@@ -92,7 +92,7 @@
                 {% endfor %}
             </section>
         </div>
-        
+
         {% else %}
         <div>
                 <section>
@@ -107,7 +107,7 @@
                         Description: {{ request['description'] }}<br>
                         <form action="" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="postid" value="{{request['requestid']}}"/>
-                            <input type="submit" name="receivertake" value="accept"/><br>
+                            <input type="submit" name="drivertake" value="accept"/><br>
                         </form>
                     </div>
                     {% endif %}
@@ -126,7 +126,7 @@
                         Description: {{ request['description'] }}<br>
                         <form action="" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="postid" value="{{request['requestid']}}"/>
-                            <input type="submit" name="receivergiveback" value="revoke"/><br>
+                            <input type="submit" name="drivergiveback" value="revoke"/><br>
                         </form>
                     </div>
                     {% endif %}

@@ -7,53 +7,50 @@
         <!--  The below line can be used to bypass client side dynamic page  -->
         <!-- Refreshes page every five seconds -->
         <!--<meta http-equiv="refresh" content="5">-->
-        <link rel="stylesheet" href="/static/css/headerStyle.css">
+        <link rel="stylesheet" href="/static/css/indexStyle.css">
     </head>
     <body>
-
         <header>
-                <div class="headercenter">
-                    <a href="{{url_for('show_index')}}"><img src="/static/images/logo.png" alt="MealRunner Logo"></a>
-                    <span><a href="{{url_for('show_logout')}}">logout</a> </span>
+                <div>
+                    <a href="{{url_for('show_index')}}" ><img src="/static/images/logo.png" alt="MealRunner Logo"></a>
                 </div>
-                <br/>
-                <br/>
-                <hr>
+                
         </header>
-    
+        <span id="topright"><a href="{{url_for('show_logout')}}" class="button6">logout</a> </span>
+        <hr>
+        <h1 id="signup">Hello {{fullname}}</h1>
         {% if type=='Giver' %}
 
         <div>
-            <h1>Hello {{fullname}}</h1>
-            <section>
+            <div class="form-style-8">
+                <h2>Make a Pickup Request</h2>
                 <form action="" method="post" enctype="multipart/form-data">
-                    Request Description<input type="text" name="description"/><br>
-                    <input type="submit" name="makepost" value="post"/><br>
+                    <input type="text" name="description" placeholder="Description" />
+                    <input type="submit" name="makepost" value="Post"/>
                 </form>
-            </section>
+            </div>
             
             <section>
                 <h3>My Requests</h3>
                 {% for request in allrequests %}
                 {% if request['giverowner']==username %}
-                <div>
+                <div class="card">
                     Giver: {{ request['giverowner'] }}<br>
                     Address: {{ request['giveraddress'] }}<br>
                     Receiver: {{ request['receiverowner'] }}<br>
                     Address: {{ request['receiveraddress'] }}<br>
                     Description: {{ request['description'] }}<br>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="deletepost" value="delete"/><br>
+                    </form>
                 </div>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <input type="submit" name="deletepost" value="delete"/><br>
-                </form>
                 {% endif %}
                 {% endfor %}
             </section>
         </div>
 
         {% elif type=='Receiver' %}
-        <div>
-            <h1>Hello {{fullname}}</h1>  
+        <div>  
 
             <section>
                 <h3>Requests Available</h3>
@@ -93,8 +90,6 @@
         </div>
         {% else %}
         <div>
-                <h1>Hello {{fullname}}</h1>  
-    
                 <section>
                     <h3>Requests Available</h3>
                     {% for request in allrequests %}

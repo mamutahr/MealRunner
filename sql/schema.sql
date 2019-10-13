@@ -11,8 +11,9 @@ CREATE TABLE requests (
     requestid INTEGER PRIMARY KEY,
     description VARCHAR2(100) NOT NULL,
     giverowner VARCHAR2(50) NOT NULL,
-    recieverowner VARCHAR2(50),
-    recieveraccept INTEGER NOT NULL,
+    receiverowner VARCHAR2(50),
+    driverrowner VARCHAR2(50),
+    receiveraccept INTEGER NOT NULL,
     driveraccept INTEGER NOT NULL,
     CONSTRAINT giver_owner 
         FOREIGN KEY (giverowner) REFERENCES USERS(USERNAME) ON DELETE CASCADE ON UPDATE CASCADE

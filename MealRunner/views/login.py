@@ -12,7 +12,6 @@ APP = flask.Flask(__name__)
 
 @MealRunner.app.route('/accounts/login/', methods=['GET', 'POST'])
 def show_login():
-    print('xxxx')
     """Display route."""
     if 'username' in flask.session:
         return flask.redirect(flask.url_for('show_index'))

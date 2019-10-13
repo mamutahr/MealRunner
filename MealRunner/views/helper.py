@@ -12,10 +12,10 @@ def get_user(uname):
         )
     return cur.fetchone()
 
-def get_request(owner):
-    """Get a request object from username"""
+def get_request(user):
+    """Get a user object from username"""
     database = MealRunner.model.get_db()
     cur = database.execute(
-        "Select * from requests where giverowner = ?", (owner,)
+        "Select * from requests where requestid = ?", (id,)
         )
-    return cur.fetchall()
+    return cur.fetchone()

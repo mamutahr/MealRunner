@@ -7,25 +7,30 @@
         <!--  The below line can be used to bypass client side dynamic page  -->
         <!-- Refreshes page every five seconds -->
         <!--<meta http-equiv="refresh" content="5">-->
-        <link rel="stylesheet" href="/static/css/headerStyle.css">
+        <link rel="stylesheet" href="/static/css/loginStyle.css">
     </head>
     <body>
 
         <header>
-                <a href="{{url_for('show_index')}}"><img src="/static/images/logo.png" alt="MealRunner Logo"></a>
-                <span id="headerright"> <a href="{{url_for('show_create')}}">Sign up</a> | <a href="{{url_for('show_login')}}">login</a> </span>
-                <br/>
-                <br/>
-                <hr>
+                <div>
+                    <a href="{{url_for('show_index')}}" ><img src="/static/images/logo.png" alt="MealRunner Logo"></a>
+                    <span>  </span>
+                </div>
         </header>
-    
-    <form action="" method="post" enctype="multipart/form-data">
-        <div>Username <input type="text" name="username"/></div>
-        <div>Password <input type="password" name="password"/></div>
-        <div><input type="submit" value="login"/></div>
-    </form>
-    Don't have an account?
-    <a href="/accounts/create/"> Sign up</a>
+
+        <div class="form-style-8">
+            <h2>Login to your account</h2>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="text" name="username" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="submit" value="login" />
+            </form>
+        </div>
+        <div id="signup">
+            <span id="signuptext">Don't have an account?&nbsp;&nbsp;&nbsp;</span>
+            <a href="{{url_for('show_create')}}" class="button6">Sign up</a>
+        </div>
+        
 
 
     </body>

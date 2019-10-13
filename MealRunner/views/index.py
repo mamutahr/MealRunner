@@ -7,6 +7,7 @@ URLs include:
 import flask
 import MealRunner
 from MealRunner.views.helper import get_user
+from MealRunner.model import get_db
 
 
 @MealRunner.app.route('/')
@@ -17,12 +18,25 @@ def show_index():
     user = flask.session['username']
     connection = get_db().cursor()
     connection.execute("SELECT * FROM users WHERE username = \'"+user+"\'")
-    userInfo = connection.fetchall()
-    userType = userInfo.type 
+    userInfo = connection.fetchall()[0]
+    userType = userInfo['type'] 
+    userName = userInfo['fullname']
     
-    requests = []
+
+    requests = connection.execute("SELECT * FROM requests")
+    for idx, req in enumerate(requests):
+    	connection.execute("SELECT address FROM users WHERE username = \'"+req['giverowner']+"\'")
+    	fetch = connection.fetchone()
+    	if fetch:
+    		requests[idx]['giveraddress'] = fetch.address
+    	connection.execute("SELECT address FROM users WHERE username = \'"+req['receiverowner']+"\'")
+    	fetch = connection.fetchone()
+    	if fetch:
+    		requests[idx]['receiveraddress'] = fetch.address
+
+    '''
     if userType == 'Giver':
-        connection.execute("SELECT * FROM requests WHERE giverowner = \'"+user+"\'")
+         WHERE giverowner = \'"+user+"\'")
         connection.fetchall()
 
     elif userType == 'Receiver':
@@ -32,14 +46,20 @@ def show_index():
         availableRequests = connection.fetchall()
 
     elif userType == 'Driver':
-        connection.execute("SELECT * FROM requests WHERE receiverowner = \'"+user+"\' ")
+        connection.execute("SELECT * FROM requests WHERE driverrowner = \'"+user+"\' ")
         acceptedRequests = connection.fetchall()
         connection.execute("SELECT * FROM requests WHERE receiveraccept = 0 AND driveraccept = 0")
         availableRequests = connection.fetchall()
+	'''
 
 
 
 
+    context ={
+    	'type': userType,
+    	'fullname': userName,
+    	'allrequests': requests,
+    	'username': user
 
-    context ={}
+    }
     return flask.render_template("index.html", **context)

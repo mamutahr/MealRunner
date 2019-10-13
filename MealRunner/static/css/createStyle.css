@@ -5,10 +5,6 @@ header{
     width: 100%;
 }
 
-img{
-    width: 100%;
-}
-
 hr {
     border: 1px solid #a600a6;
     width: 75%;
@@ -41,6 +37,16 @@ a.button6:active{
     }
 }
 
+#signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#signuptext{
+    font-size: 150%;
+}
 
 .form-style-8{
 	font-family: 'Open Sans Condensed', arial, sans;
@@ -48,10 +54,6 @@ a.button6:active{
 	padding: 30px;
 	background: #FFFFFF;
 	margin: 50px auto;
-	box-shadow: 0px 0px 15px #a600a6;
-	-moz-box-shadow: 0px 0px 15px #a600a6;
-	-webkit-box-shadow:  0px 0px 15px #a600a6;
-
 }
 .form-style-8 h2{
 	background: #4D4D4D;
@@ -100,20 +102,9 @@ a.button6:active{
 	font-size: 14px;
 	padding: 8px 18px;
 	text-decoration: none;
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 .form-style-8 input[type="button"]:hover, 
 .form-style-8 input[type="submit"]:hover {
-	background-color:#a600a6;
-}
-
-#signup{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-#signuptext{
-    font-size: 150%;
+    background-color:#977897;
 }

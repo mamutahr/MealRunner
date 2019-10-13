@@ -117,6 +117,8 @@ a.button6:active{
     transition: 0.3s;
     width: 40%;
     margin: 1%;
+    padding: 1%;
+    font-size: 150%;
   }
   
 .card:hover {

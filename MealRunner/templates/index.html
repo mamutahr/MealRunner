@@ -39,10 +39,10 @@
                     Address: {{ request['giveraddress'] }}<br>
                     Receiver: {{ request['receiverowner'] }}<br>
                     Address: {{ request['receiveraddress'] }}<br>
-                    Description: {{ request['description'] }}<br>
+                    Description: {{ request['description'] }}<br><br>
                     <form action="" method="post" enctype="multipart/form-data">
                         <input type="submit" name="deletepost" value="delete"/><br>
-                    </form>
+                    </form><br>
                 </div>
                 {% endif %}
                 {% endfor %}

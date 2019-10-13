@@ -39,8 +39,8 @@ def show_index():
             WHERE requestid = ?", (user, flask.request.form["postid"]))
             database.commit()
         if "receivergiveback" in flask.request.form:
-            connection.execute("UPDATE requests SET receiverowner = NULL, receiveraccept = 0 \
-            WHERE requestid = ?", (flask.request.form["postid"],))
+            connection.execute("UPDATE requests SET receiverowner = NULL, driverowner = NULL, \
+            receiveraccept = 0, driveraccept = 0 WHERE requestid = ?", (flask.request.form["postid"],))
             database.commit()
         if "drivertake" in flask.request.form:
             connection.execute("UPDATE requests SET driverowner = ?, driveraccept = 1 \

@@ -55,7 +55,11 @@
         <div>  
 
             <section>
+                {% if numPosts-numReceiverAccept>0 %}
                 <h2>Requests Available</h2>
+                {% else %}
+                <h2>No Requests Available, Try Again Later!</h2>
+                {% endif %}
                 {% for request in allrequests %}
                 {% if request['receiveraccept']!=1 and request['receiverowner']!=username %}
                 <div class="card sidebyside">
@@ -96,7 +100,11 @@
         {% else %}
         <div>
                 <section>
+                    {% if numReceiverAccept-numDriverAccept>0 %}
                     <h2>Requests Available</h2>
+                    {% else %}
+                    <h2>No Requests Available, Try Again Later!</h2>
+                    {% endif %}
                     {% for request in allrequests %}
                     {% if request['receiveraccept']==1 and request['driveraccept']!=1 %}
                     <div class="card sidebyside">

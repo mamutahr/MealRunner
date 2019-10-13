@@ -66,12 +66,23 @@ def show_index():
             if fetch:
                 requests[idx]['receiveraddress'] = fetch['address']
 
+    cur = connection.execute("Select count(*) from requests")
+    numPosts = connection.fetchone()['count(*)']
+
+    cur = connection.execute("Select count(*) from requests where receiveraccept = 1")
+    numRecieverAcceptedPosts = connection.fetchone()['count(*)']
+
+    cur = connection.execute("Select count(*) from requests where driveraccept = 1")
+    numDriverAcceptedPosts = connection.fetchone()['count(*)']
+
     requests.reverse()
     context ={
     	'type': userType,
     	'fullname': userName,
     	'allrequests': requests,
-    	'username': user
-
+    	'username': user,
+        'numPosts': numPosts,
+        'numReceiverAccept': numRecieverAcceptedPosts,
+        'numDriverAccept': numDriverAcceptedPosts
     }
     return flask.render_template("index.html", **context)

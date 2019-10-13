@@ -17,14 +17,6 @@ def show_index():
     """Display / route."""
     database = get_db()
     connection = database.cursor()
-    if flask.request.method == 'POST':
-        if "makepost" in flask.request.form:
-            connection.execute("INSERT INTO REQUESTS(description, giverowner, receiveraccept, driveraccept) \
-            VALUES (?, ?, 0, 0)", (flask.request.form["description"], flask.session['username']))
-            database.commit()
-        if "deletepost" in flask.request.form:
-            connection.execute("DELETE FROM REQUESTS WHERE requestid = ?", (flask.request.form["postid"],))
-            database.commit()
     if 'username' not in flask.session:
         return flask.redirect(flask.url_for('show_login'))
     user = flask.session['username']
@@ -33,6 +25,23 @@ def show_index():
     userInfo = connection.fetchall()[0]
     userType = userInfo['type']
     userName = userInfo['fullname']
+
+    if flask.request.method == 'POST':
+        if "makepost" in flask.request.form:
+            connection.execute("INSERT INTO REQUESTS(description, giverowner, receiveraccept, driveraccept) \
+            VALUES (?, ?, 0, 0)", (flask.request.form["description"], flask.session['username']))
+            database.commit()
+        if "deletepost" in flask.request.form:
+            connection.execute("DELETE FROM REQUESTS WHERE requestid = ?", (flask.request.form["postid"],))
+            database.commit()
+        if "receivertake" in flask.request.form:
+            connection.execute("UPDATE requests SET receiverowner = ?, receiveraccept = 1 \
+            WHERE requestid = ?", (user, flask.request.form["postid"]))
+            database.commit()
+        if "receivergiveback" in flask.request.form:
+            connection.execute("UPDATE requests SET receiverowner = NULL, receiveraccept = 0 \
+            WHERE requestid = ?", (flask.request.form["postid"],))
+            database.commit()
 
     connection.execute('SELECT * FROM requests')
     requests = connection.fetchall()

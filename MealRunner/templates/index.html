@@ -90,7 +90,13 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="postid" value="{{request['requestid']}}"/>
                         <input type="submit" name="receivergiveback" value="revoke"/><br>
+                        {% if request['driveraccept']==1 %}
+                        <input type="submit" name="droppedoff" value="Dropped Off"/><br>
+                        {% endif %}
                     </form>
+                    {% if request['driveraccept']==1 %}
+                    <h3>Driver Has Accepted Request!</h3>
+                    {% endif %}
                 </div>
                 {% endif %}
                 {% endfor %}
@@ -136,6 +142,7 @@
                             <input type="hidden" name="postid" value="{{request['requestid']}}"/>
                             <input type="submit" name="drivergiveback" value="revoke"/><br>
                         </form>
+                        <a class="button6 smaller" href="https://www.google.com/maps/dir/{{ request['giveraddress'] }}/{{ request['receiveraddress'] }}/" target="_blank">Directions</a>
                     </div>
                     {% endif %}
                     {% endfor %}

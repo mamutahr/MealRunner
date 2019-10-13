@@ -34,6 +34,11 @@ a.button6:active{
     top:0.1em;
 }
 
+a.smaller{
+    text-transform:capitalize;
+    float: right;
+}
+
 @media all and (max-width:30em){
     a.button6{
         display:block;

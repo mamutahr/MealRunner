@@ -42,6 +42,9 @@ def show_index():
             connection.execute("UPDATE requests SET receiverowner = NULL, driverowner = NULL, \
             receiveraccept = 0, driveraccept = 0 WHERE requestid = ?", (flask.request.form["postid"],))
             database.commit()
+        if "droppedoff" in flask.request.form:
+            connection.execute("DELETE FROM requests WHERE requestid = ?", (flask.request.form["postid"],))
+            database.commit()
         if "drivertake" in flask.request.form:
             connection.execute("UPDATE requests SET driverowner = ?, driveraccept = 1 \
             WHERE requestid = ?", (user, flask.request.form["postid"]))

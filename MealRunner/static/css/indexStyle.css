@@ -124,3 +124,11 @@ a.button6:active{
 .card:hover {
     box-shadow: 0 8px 16px 0 #a600a6;
 }
+
+.centersection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    width: 100%;
+}

@@ -61,7 +61,7 @@ def show_index():
 
 
 
-
+    requests.reverse()
     context ={
     	'type': userType,
     	'fullname': userName,

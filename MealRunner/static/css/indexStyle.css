@@ -119,7 +119,6 @@ a.smaller{
 
 .card {
     box-shadow: 0 4px 8px 0 #a600a6;
-    transition: 0.3s;
     width: 40%;
     margin: 1%;
     padding: 1%;

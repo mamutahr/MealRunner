@@ -12,7 +12,6 @@ APP = flask.Flask(__name__)
 
 @MealRunner.app.route('/accounts/login/', methods=['GET', 'POST'])
 def show_login():
-    print('xxxx')
     """Display route."""
     if 'username' in flask.session:
         return flask.redirect(flask.url_for('show_index'))
@@ -24,7 +23,7 @@ def show_login():
         user_password = flask.request.form['password']
         connection = get_db().cursor()
         connection.execute("SELECT password FROM users WHERE username "
-                           "LIKE \'" + flask.session['username'] + "\' ")
+                           "= \'" + flask.session['username'] + "\' ")
         hashed_password = connection.fetchall()
         if not hashed_password:
             flask.session.clear()
@@ -49,6 +48,5 @@ def show_logout():
 def check_password(hashed_password, user_password):
     """Check password."""
     algorithm, salt, password = hashed_password.split('$')
-    print(algorithm, salt, password)
     return password == hashlib.sha512(salt.encode() +
                                       user_password.encode()).hexdigest()

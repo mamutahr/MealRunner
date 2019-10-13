@@ -45,8 +45,8 @@ def show_create_user():
                      flask.request.form['fullname'],
                      flask.request.form['email'],
                      create_password(flask.request.form['password']),
-                     flask.request.form['type']),
-                     flask.request.form['address'])
+                     flask.request.form['type'],
+                     flask.request.form['address']))
         flask.session['username'] = flask.request.form['username']
         return flask.redirect(flask.url_for('show_index'))
     return flask.render_template("createUser.html", **context)

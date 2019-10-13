@@ -20,17 +20,17 @@
         <hr>
 
         <div class="form-style-8">
-                <h1>Sign Up As:</h1>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <input type="submit" name="giver" value="Giver"/><br>
-                    <input type="submit" name="driver" value="Driver"/><br>
-                    <input type="submit" name="receiver" value="Receiver"/>
-                </form>
+            <h1>Sign Up As:</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="input"><input type="submit" name="giver" value="Giver"/></div><br>
+                <div class="input"><input type="submit" name="driver" value="Driver"/></div><br>
+                <div class="input"><input type="submit" name="receiver" value="Receiver"/></div>
+            </form>
         </div>
 
         <div id="signup">
-                <span id="signuptext">Already have an account?&nbsp;&nbsp;&nbsp;</span>
-                <a href="{{url_for('show_login')}}" class="button6">login</a>
+            <span id="signuptext">Already have an account?&nbsp;&nbsp;&nbsp;</span>
+            <a href="{{url_for('show_login')}}" class="button6">login</a>
         </div>
 
     </body>

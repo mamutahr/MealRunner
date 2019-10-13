@@ -19,6 +19,116 @@
                 <hr>
         </header>
     
-        {{ username }}
+        {% if type=='Giver' %}
+
+        <div>
+            <h1>Hello {{fullname}}</h1>
+            <section>
+                <form action="" method="post" enctype="multipart/form-data">
+                    Request Description<input type="text" name="description"/><br>
+                    <input type="submit" name="makepost" value="post"/><br>
+                </form>
+            </section>
+            
+            <section>
+                <h3>My Requests</h3>
+                {% for request in allrequests %}
+                {% if request['giverowner']==username %}
+                <div>
+                    Giver: {{ request['giverowner'] }}<br>
+                    Address: {{ request['giveraddress'] }}<br>
+                    Receiver: {{ request['receiverowner'] }}<br>
+                    Address: {{ request['receiveraddress'] }}<br>
+                    Description: {{ request['description'] }}<br>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="submit" name="deletepost" value="delete"/><br>
+                </form>
+                {% endif %}
+                {% endfor %}
+            </section>
+        </div>
+
+        {% elif type=='Receiver' %}
+        <div>
+            <h1>Hello {{fullname}}</h1>  
+
+            <section>
+                <h3>Requests Available</h3>
+                {% for request in allrequests %}
+                {% if request['receiveraccept']!=1 and request['receiverowner']!=username %}
+                <div>
+                    Giver: {{ request['giverowner'] }}<br>
+                    Address: {{ request['giveraddress'] }}<br>
+                    Receiver: {{ request['receiverowner'] }}<br>
+                    Address: {{ request['receiveraddress'] }}<br>
+                    Description: {{ request['description'] }}<br>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="submit" name="receivertake" value="accept"/><br>
+                </form>
+                {% endif %}
+                {% endfor %}
+            </section>
+
+            <section>
+                <h3>Your Accepted Requests</h3>
+                {% for request in allrequests %}
+                {% if request['receiverowner']==username %}
+                <div>
+                    Giver: {{ request['giverowner'] }}<br>
+                    Address: {{ request['giveraddress'] }}<br>
+                    Receiver: {{ request['receiverowner'] }}<br>
+                    Address: {{ request['receiveraddress'] }}<br>
+                    Description: {{ request['description'] }}<br>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="submit" name="receivergiveback" value="revoke"/><br>
+                </form>
+                {% endif %}
+                {% endfor %}
+            </section>
+        </div>
+        {% else %}
+        <div>
+                <h1>Hello {{fullname}}</h1>  
+    
+                <section>
+                    <h3>Requests Available</h3>
+                    {% for request in allrequests %}
+                    {% if request['receiveraccept']==1 and request['driveraccept']!=1 %}
+                    <div>
+                        Giver: {{ request['giverowner'] }}<br>
+                        Address: {{ request['giveraddress'] }}<br>
+                        Receiver: {{ request['receiverowner'] }}<br>
+                        Address: {{ request['receiveraddress'] }}<br>
+                        Description: {{ request['description'] }}<br>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="receivertake" value="accept"/><br>
+                    </form>
+                    {% endif %}
+                    {% endfor %}
+                </section>
+    
+                <section>
+                    <h3>Your Accepted Requests</h3>
+                    {% for request in allrequests %}
+                    {% if request['driverowner']==username %}
+                    <div>
+                        Giver: {{ request['giverowner'] }}<br>
+                        Address: {{ request['giveraddress'] }}<br>
+                        Receiver: {{ request['receiverowner'] }}<br>
+                        Address: {{ request['receiveraddress'] }}<br>
+                        Description: {{ request['description'] }}<br>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="receivergiveback" value="revoke"/><br>
+                    </form>
+                    {% endif %}
+                    {% endfor %}
+                </section>
+            </div>
+        {% endif %}
     </body>
 </html>

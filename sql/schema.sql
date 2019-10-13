@@ -8,11 +8,11 @@ CREATE TABLE users (
 );
 
 CREATE TABLE requests (
-    requestid INTEGER PRIMARY KEY,
+    requestid INTEGER PRIMARY KEY AUTOINCREMENT,
     description VARCHAR2(100) NOT NULL,
     giverowner VARCHAR2(50) NOT NULL,
     receiverowner VARCHAR2(50),
-    driverrowner VARCHAR2(50),
+    driverowner VARCHAR2(50),
     receiveraccept INTEGER NOT NULL,
     driveraccept INTEGER NOT NULL,
     CONSTRAINT giver_owner 

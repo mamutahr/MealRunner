@@ -1,7 +1,9 @@
-header img{
-    width: 10%;
+.headercenter{
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
-
-header span{
-    float: right;
-}
+/* 
+.header span{
+    justify-content: right;
+} */

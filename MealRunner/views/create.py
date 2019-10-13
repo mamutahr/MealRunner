@@ -18,7 +18,7 @@ def show_create():
         if "driver" in flask.request.form:
             return flask.redirect(flask.url_for('show_create_user', user_type='Driver'))
         if "receiver" in flask.request.form:
-            return flask.redirect(flask.url_for('show_create_user', user_type='receiver'))
+            return flask.redirect(flask.url_for('show_create_user', user_type='Receiver'))
     context = {}
     return flask.render_template("create.html", **context)
 

@@ -45,6 +45,9 @@
                         <input type="hidden" name="postid" value="{{request['requestid']}}"/>
                         <input type="submit" name="deletepost" value="delete"/><br>
                     </form><br>
+                    {% if request['driveraccept']==1 %}
+                    <h3>Driver Has Accepted Request!</h3>
+                    {% endif %}
                 </div>
                 {% endif %}
                 {% endfor %}
